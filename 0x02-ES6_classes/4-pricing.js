@@ -11,19 +11,19 @@ export default class Pricing {
   }
 
   set amount(value) {
-    
-      this._amount = value;
-    
+    this._amount = value;
   }
 
   get currency() {
     return this._currency;
   }
 
-  set currency(value) {
-  
-      this._currency = value;
-    
+  set currency(newCurrency) {
+    if (newCurrency instanceof Currency) {
+      this._currency = newCurrency;
+    } else {
+      throw new TypeError('Currency must be an instance of the Currency class.');
+    }
   }
 
   displayFullPrice() {
